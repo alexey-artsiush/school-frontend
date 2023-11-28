@@ -1,9 +1,18 @@
+import { ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouter } from './providers/router';
-import '../App.css';
+import { SideBar } from '../widgets/Sidebar/ui/Sidebar/ui/Sidebar/Sidebar';
+import theme from './styles/theme/theme';
 
 const App = () => (
   <div className="app">
-    <AppRouter />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <SideBar>
+        <AppRouter />
+      </SideBar>
+    </ThemeProvider>
+
   </div>
 );
 

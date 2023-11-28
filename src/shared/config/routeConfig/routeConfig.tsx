@@ -1,15 +1,15 @@
 import { RouteProps } from 'react-router-dom';
-import { MainPage } from '../../../pages/MainPage';
-import { AboutPage } from '../../../pages/AboutPage';
+import { MainPage } from '@/pages/MainPage';
+import { ChatPage } from '@/pages/ChatPage';
 
 export enum AppRoutes {
   MAIN = 'main',
-  ABOUT = 'about',
+  CHAT = 'chat',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
-  [AppRoutes.ABOUT]: '/about',
+  [AppRoutes.CHAT]: '/chat',
 
 };
 
@@ -18,8 +18,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     path: RoutePath.main,
     element: <MainPage />,
   },
-  [AppRoutes.ABOUT]: {
-    path: RoutePath.main,
-    element: <AboutPage />,
+  [AppRoutes.CHAT]: {
+    path: RoutePath.chat,
+    element: <ChatPage />,
   },
 };
