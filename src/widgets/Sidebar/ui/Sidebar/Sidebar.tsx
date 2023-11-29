@@ -17,10 +17,10 @@ import { useState } from 'react';
 import {
   FormControl, MenuItem, Select,
 } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
 import Logo from '@/shared/assets/logo.svg?react';
-import { SideBarItem } from '../SidebarItem/SidebarItem';
-import { getRouteChat, getRouteMain } from '../../../../../../shared/const/router';
+import { SideBarItem } from '@/widgets/Sidebar/ui/SidebarItem/SidebarItem';
+import { getRouteChat, getRouteMain } from '../../../../shared/const/router';
+import { Settings } from '@/features/Settings';
 
 const drawerWidth = 240;
 
@@ -160,7 +160,9 @@ export const SideBar = ({ children }: SideBarProps) => {
             <MenuItem value="ru">RU</MenuItem>
           </Select>
         </FormControl>
-        <SettingsIcon color="primary" />
+
+        <Settings />
+
       </Header>
       <Drawer
         variant="permanent"
