@@ -5,7 +5,7 @@ import {
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { login } from '@/entities/User/model/services/auth/auth';
+import { register } from '@/entities/User/model/services/auth/auth';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email address').required('Email is required'),
@@ -18,7 +18,7 @@ interface AuthFormProps {
   anchorEl: HTMLElement | null;
 }
 
-export const AuthForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl }) => {
+export const RegisterForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -27,7 +27,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl }) =
     },
     validationSchema,
     onSubmit: (values) => {
-      dispatch(login(values));
+      dispatch(register(values));
       onClose();
     },
   });
@@ -51,7 +51,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl }) =
     >
       <Box p={2} width={300}>
         <Typography variant="h6" gutterBottom>
-          Login
+          Sign in
         </Typography>
         <Divider />
         <form onSubmit={formik.handleSubmit}>

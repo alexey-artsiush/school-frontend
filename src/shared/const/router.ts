@@ -1,9 +1,9 @@
 export enum AppRoutes {
   MAIN = 'overview',
-  CALENDAR = 'calendar',
   CHAT = 'chat',
-  PROFILE = 'profile',
-  NOT_FOUND = 'not_found',
+  // CALENDAR = 'calendar',
+  // PROFILE = 'profile',
+  // NOT_FOUND = 'not_found',
 }
 
 export const getRouteMain = () => '/';
