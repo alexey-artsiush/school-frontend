@@ -87,7 +87,7 @@ export const RegisterForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl 
             type="submit"
             style={{ marginTop: 10 }}
           >
-            Login
+            Sign in
           </Button>
         </form>
       </Box>

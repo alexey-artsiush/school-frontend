@@ -17,10 +17,12 @@ import { useState } from 'react';
 import {
   FormControl, MenuItem, Select,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Logo from '@/shared/assets/logo.svg?react';
 import { SideBarItem } from '@/widgets/Sidebar/ui/SidebarItem/SidebarItem';
 import { getRouteChat, getRouteMain } from '../../../../shared/const/router';
 import { Settings } from '@/features/Settings';
+import theme from '@/app/styles/theme/theme';
 
 const drawerWidth = 240;
 
@@ -129,6 +131,8 @@ export const SideBar = ({ children }: SideBarProps) => {
           flexDirection: 'row',
           alignItems: 'center',
           padding: '10px 20px',
+          backgroundColor: theme.palette.background.default,
+          borderBottom: '1px solid #7784EE',
         }}
       >
         <FormControl sx={{ margin: '8px', width: '70px', color: 'primary' }}>
@@ -179,7 +183,9 @@ export const SideBar = ({ children }: SideBarProps) => {
           color: '#FFFFFF',
         }}
         >
-          <Logo sx={{ margin: 'auto' }} />
+          <Link to={getRouteMain()}>
+            <Logo sx={{ margin: 'auto' }} />
+          </Link>
 
           <List>
             {dataSidebar.map((item) => (

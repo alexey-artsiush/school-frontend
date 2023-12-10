@@ -1,6 +1,8 @@
+import { Chat } from '@/features/ChatGPTSupport';
+
 const ChatPage = () => (
   <div>
-    CHAT PAGE
+    <Chat />
   </div>
 );
 
