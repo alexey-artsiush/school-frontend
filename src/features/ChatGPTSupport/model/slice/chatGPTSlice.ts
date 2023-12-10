@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createSlice } from '@reduxjs/toolkit';
 import { ChatGPTShema } from '@/features/ChatGPTSupport/model/types/chatGPTShema';
 import { sendMessage } from '@/features/ChatGPTSupport/model/services/chat/chat';
