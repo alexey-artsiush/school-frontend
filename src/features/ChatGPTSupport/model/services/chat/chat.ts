@@ -5,13 +5,11 @@ import { User } from '@/entities/User';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { api } from '@/shared/api/api';
 import { RegisterData } from '@/entities/User/model/services/auth/auth';
-import { Message } from '@/features/ChatGPTSupport/model/types/chatGPTShema';
 import { chatGPTSlice } from '@/features/ChatGPTSupport/model/slice/chatGPTSlice';
 
 export const sendMessage = createAsyncThunk<
 User,
-Message,
-ThunkConfig<string>
+string
 >('chat/send_message', async (message, thunkApi) => {
   const { rejectWithValue, dispatch } = thunkApi;
 

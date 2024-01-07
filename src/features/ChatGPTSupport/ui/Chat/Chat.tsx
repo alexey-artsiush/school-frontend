@@ -1,23 +1,20 @@
-// @ts-nocheck
-
 import React, { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ChatMessage } from '@/features/ChatGPTSupport/ui/MessageCard/MessageCard';
 import { SendMessage } from '@/features/ChatGPTSupport/ui/SendMessage/SendMessage';
 import { sendMessage } from '@/features/ChatGPTSupport/model/services/chat/chat';
-import { getChatErrorState, getChatInfo } from '@/features/ChatGPTSupport';
+import { getChatInfo } from '@/features/ChatGPTSupport';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
 
 export const Chat: React.FC = () => {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const chatData = useSelector(getChatInfo);
-  const chatError = useSelector(getChatErrorState);
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [message, setMessage] = useState<string>('');
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const handleSendMessage = async (message: string) => {
     try {
       dispatch(sendMessage(message));
@@ -36,7 +33,7 @@ export const Chat: React.FC = () => {
 
   return (
     <div style={{
-      display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 112px)', width: '80%', margin: 'auto', maxWidth: '800px',
+      display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 125px)', width: '80%', margin: 'auto', maxWidth: '800px',
     }}
     >
       <div
@@ -49,8 +46,8 @@ export const Chat: React.FC = () => {
           borderBottom: '1px solid #ccc',
         }}
       >
-        {chatData.map((entry, index) => (
-          <ChatMessage key={index} author={entry.author} message={entry.message} />
+        {chatData && chatData.map((entry) => (
+          <ChatMessage key={entry.message} author={entry.author} message={entry.message} />
         ))}
       </div>
 

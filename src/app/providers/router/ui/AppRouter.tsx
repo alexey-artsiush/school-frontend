@@ -26,7 +26,6 @@ const AppRouter = () => {
     );
   }, []);
 
-  // @ts-ignore
   return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
 

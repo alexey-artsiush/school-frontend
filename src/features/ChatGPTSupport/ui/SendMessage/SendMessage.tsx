@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React, { useState } from 'react';
 import {
   Button, CircularProgress, InputAdornment, TextField,
@@ -39,7 +37,7 @@ export const SendMessage: React.FC<ChatInputFormProps> = ({ onSendMessage }) => 
       variant="outlined"
       fullWidth
       multiline
-      rowsMax={4}
+      maxRows={4}
       value={message}
       onChange={(e) => setMessage(e.target.value)}
       onKeyPress={handleKeyPress}
