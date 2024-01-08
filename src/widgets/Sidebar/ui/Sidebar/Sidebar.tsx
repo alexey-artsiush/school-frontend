@@ -1,99 +1,36 @@
 // @ts-nocheck
-
 import * as React from 'react';
 import {
   styled, Theme, CSSObject,
 } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import SchoolIcon from '@mui/icons-material/School';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Chat } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import {
-  FormControl, MenuItem, Select, SelectChangeEvent,
+  FormControl, MenuItem, Select, SelectChangeEvent, useTheme,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Logo from '@/shared/assets/logo.svg?react';
 import { SideBarItem } from '@/widgets/Sidebar/ui/SidebarItem/SidebarItem';
-import { getRouteChat, getRouteMain } from '../../../../shared/const/router';
+import { getRouteChat, getRouteCourses, getRouteMain } from '../../../../shared/const/router';
 import { Settings } from '@/features/Settings';
-import theme from '@/app/styles/theme/theme';
-
-const drawerWidth = 240;
-
-const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: 'hidden',
-});
-
-const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: 'hidden',
-
-  width: `calc(${theme.spacing(13)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(14)} + 1px)`,
-  },
-});
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const Header = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  background: 'none',
-  width: `calc(100% - ${theme.spacing(14)})`,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${theme.spacing(29)})`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    backgroundColor: theme.palette.secondary.main,
-    width: drawerWidth,
-    boxSizing: 'border-box',
-    ...(open && {
-      ...openedMixin(theme),
-      '& .MuiDrawer-paper': openedMixin(theme),
-    }),
-    ...(!open && {
-      ...closedMixin(theme),
-      '& .MuiDrawer-paper': closedMixin(theme),
-    }),
-  }),
-);
+import { Drawer, Header } from '@/widgets/Sidebar/ui/Sidebar/SidebarStyles';
 
 interface SideBarProps {
   children: React.ReactNode
 }
 
 export const SideBar = ({ children }: SideBarProps) => {
+  const theme = useTheme();
   const { t, i18n } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [language, setLanguage] = useState(i18n.language);
@@ -118,6 +55,11 @@ export const SideBar = ({ children }: SideBarProps) => {
       icon: <Chat />,
       text: t('Chat'),
       route: getRouteChat(),
+    },
+    {
+      icon: <SchoolIcon />,
+      text: t('Courses'),
+      route: getRouteCourses(),
     },
   ];
 
@@ -176,6 +118,7 @@ export const SideBar = ({ children }: SideBarProps) => {
       >
 
         <Box sx={{
+          backgroundColor: theme.palette.background.purple,
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'column',
@@ -218,7 +161,7 @@ export const SideBar = ({ children }: SideBarProps) => {
       <Box
         component="main"
         sx={{
-          padding: '10px', marginTop: '92px', width: '100vw', minHeight: 'calc(100vh - 92px)',
+          padding: '15px 40px', marginTop: '92px', width: '100vw', minHeight: 'calc(100vh - 92px)',
         }}
       >
         {children}

@@ -30,8 +30,7 @@ interface UserResponseData {
 
 export const login = createAsyncThunk<
 User,
-LoginProps,
-ThunkConfig<string>
+LoginProps
 >('auth/login', async (authData, thunkApi) => {
   const { rejectWithValue } = thunkApi;
 
@@ -56,8 +55,7 @@ ThunkConfig<string>
 
 export const register = createAsyncThunk<
 User,
-LoginProps,
-ThunkConfig<string>
+LoginProps
 >('auth/register', async (authData, thunkApi) => {
   const { rejectWithValue } = thunkApi;
 
