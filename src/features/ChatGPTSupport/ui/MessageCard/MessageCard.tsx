@@ -1,6 +1,5 @@
-import { Avatar, Typography } from '@mui/material';
+import { Avatar, Typography, useTheme } from '@mui/material';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import theme from '@/app/styles/theme/theme';
 
 interface ChatMessageProps {
   author: string;
@@ -8,6 +7,7 @@ interface ChatMessageProps {
 }
 
 export const ChatMessage: React.FC<ChatMessageProps> = ({ author, message }) => {
+  const theme = useTheme();
   const isChatBot = author === 'Chatbot';
 
   return (

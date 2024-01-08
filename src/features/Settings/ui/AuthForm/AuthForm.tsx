@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React from 'react';
 import {
   TextField, Button, Popover, Typography, Divider, Box,
@@ -8,6 +6,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '@/entities/User/model/services/auth/auth';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email address').required('Email is required'),
@@ -21,7 +20,7 @@ interface AuthFormProps {
 }
 
 export const AuthForm: React.FC<AuthFormProps> = ({ open, onClose, anchorEl }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',

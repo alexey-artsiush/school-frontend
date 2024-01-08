@@ -1,7 +1,11 @@
-import { AppRoutes, getRouteChat, getRouteMain } from '@/shared/const/router';
+import {
+  AppRoutes, getCourseDetailPage, getRouteChat, getRouteCourses, getRouteMain,
+} from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 import { MainPage } from '@/pages/MainPage';
 import { ChatPage } from '@/pages/ChatPage';
+import { CourseDetailPage, CoursesPage } from '@/pages/CoursesPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
@@ -12,5 +16,20 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: getRouteChat(),
     element: <ChatPage />,
     authOnly: true,
+  },
+  [AppRoutes.COURSES]: {
+    path: getRouteCourses(),
+    element: <CoursesPage />,
+    authOnly: true,
+  },
+  [AppRoutes.COURSE_DETAIL]: {
+    path: getCourseDetailPage(),
+    element: <CourseDetailPage />,
+    authOnly: true,
+  },
+
+  [AppRoutes.NOT_FOUND]: {
+    path: '*',
+    element: <NotFoundPage />,
   },
 };
