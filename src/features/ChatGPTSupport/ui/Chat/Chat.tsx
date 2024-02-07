@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Typography } from '@mui/material';
 import { ChatMessage } from '@/features/ChatGPTSupport/ui/MessageCard/MessageCard';
 import { SendMessage } from '@/features/ChatGPTSupport/ui/SendMessage/SendMessage';
 import { sendMessage } from '@/features/ChatGPTSupport/model/services/chat/chat';
@@ -46,6 +47,8 @@ export const Chat: React.FC = () => {
           borderBottom: '1px solid #ccc',
         }}
       >
+        {!chatData?.length && <Typography fontSize="24px" fontWeight="600" sx={{ textAlign: 'center', marginTop: '100px' }}>Задайте свой вопрос</Typography>}
+
         {chatData && chatData.map((entry) => (
           <ChatMessage key={entry.message} author={entry.author} message={entry.message} />
         ))}

@@ -4,10 +4,10 @@ import { getCourse, getCourses } from '../services/courseService';
 
 const initialState: CourseSchema = {
   courses: [],
+  currentCourse: undefined,
   error: undefined,
   isLoading: false,
   isError: false,
-  currentCourse: undefined,
 };
 
 export const courseSlice = createSlice({

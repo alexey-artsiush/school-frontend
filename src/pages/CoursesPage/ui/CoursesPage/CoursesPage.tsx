@@ -16,7 +16,6 @@ const CoursesPage = () => {
 
   return (
     <ListCourses courses={courses} />
-
   );
 };
 

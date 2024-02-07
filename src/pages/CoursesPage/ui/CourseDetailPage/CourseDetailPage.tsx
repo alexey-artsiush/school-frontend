@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 import { getCourseDetail } from '@/entities/Course/model/selectors/getCourse/getCourse';
 import { getCourse } from '@/entities/Course/model/services/courseService';
 import { VideoPlayer } from '@/features/VideoPlayer';
@@ -19,9 +20,19 @@ const CourseDetailPage = () => {
   return (
     <>
       <Typography variant="h3" mb={5}>{currentCourse?.title}</Typography>
-      <CourseTypography mb={2}>{currentCourse?.text.intro}</CourseTypography>
+      <CourseTypography mb={2}>{currentCourse?.text?.intro}</CourseTypography>
       <VideoPlayer videoUrl={currentCourse?.video} />
-      <CourseTypography mt={2}>{currentCourse?.text.end}</CourseTypography>
+      <CourseTypography mt={2}>{currentCourse?.text?.end}</CourseTypography>
+
+      <Button
+        component={Link}
+        to={`/quiz/${id}`}
+        variant="contained"
+        color="primary"
+        sx={{ position: 'absolute', right: 50, bottom: 50 }}
+      >
+        Перейти к тесту
+      </Button>
     </>
 
   );

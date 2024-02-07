@@ -1,10 +1,10 @@
 import {
-  AppRoutes, getCourseDetailPage, getRouteChat, getRouteCourses, getRouteMain,
+  AppRoutes, getCourseDetailPage, getQuizPage, getRouteChat, getRouteCourses, getRouteMain,
 } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 import { MainPage } from '@/pages/MainPage';
 import { ChatPage } from '@/pages/ChatPage';
-import { CourseDetailPage, CoursesPage } from '@/pages/CoursesPage';
+import { CourseDetailPage, CoursesPage, QuizPage } from '@/pages/CoursesPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -25,6 +25,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.COURSE_DETAIL]: {
     path: getCourseDetailPage(),
     element: <CourseDetailPage />,
+    authOnly: true,
+  },
+  [AppRoutes.QUIZ]: {
+    path: getQuizPage(),
+    element: <QuizPage />,
     authOnly: true,
   },
 
